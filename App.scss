@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.wrap1 {
+  height: 100px;
+  display: flex;
+  & > div {
+    height: 100%;
+  }
+  .left {
+    width: 200px;
+    background-color: blue;
+  }
+  .center {
+    flex: 1;
+    overflow: hidden;
+    background-color: red;
+  }
+  .right {
+    width: 200px;
+    background-color: pink;
+  }
+}
+.wrap2 {
+  height: 100px;
+  & > div {
+    height: 100%;
+  }
+  .left {
+    width: 200px;
+    float: left;
+    background-color: blue;
+  }
+  .right {
+    overflow: hidden;
+    background-color: pink;
+  }
+}
+.wrap3 {
+  height: 100px;
+  display: flex;
+  & > div {
+    height: 100%;
+  }
+  .left {
+    flex-basis: 200px;
+    background-color: blue;
+  }
+  // .center {
+  //   flex: 1;
+  //   overflow: hidden;
+  //   background-color: red;
+  // }
+  .right {
+    flex: 1;
+    background-color: pink;
+  }
+}

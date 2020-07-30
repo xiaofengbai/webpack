@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import { $imgUrl } from "./src/utils/cdnConfig";
 import "./App.scss";
 export default class App extends Component {
   state = {
     obj: 1111,
   };
   componentDidMount() {
+    const { ASSET_PREFIX } = process.env;
+    console.log(ASSET_PREFIX);
     this.setState((pre, props) => {
       return props;
     });
     setTimeout(() => {
       this.setState({
-        obj: 3333,
+        obj: 33313,
       });
     }, 3000);
   }
@@ -19,7 +22,7 @@ export default class App extends Component {
     const { obj } = this.state;
     return (
       <div>
-        app
+        <img src={`${$imgUrl}/images/timg.jpeg`} alt="" />
         <div className="wrap1">
           <div className="left">{obj}</div>
           <div className="center">2</div>

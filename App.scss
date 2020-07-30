@@ -1,10 +1,12 @@
 body {
   margin: 0;
   padding: 0;
+  background-image: url($imgUrl + "/images/logo.png");
 }
 .wrap1 {
   height: 100px;
   display: flex;
+  transition: all 0.3s;
   & > div {
     height: 100%;
   }

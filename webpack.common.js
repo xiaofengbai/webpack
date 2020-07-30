@@ -1,8 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const sassConfig = require("./css.config");
+const sassConfig = require("./config/css.config");
 module.exports = {
   entry: {
     common: "./index.js",
@@ -26,6 +25,7 @@ module.exports = {
             loader: "css-loader",
             options: {
               sourceMap: true,
+              importLoaders: 1,
             },
           },
           "postcss-loader",
@@ -33,18 +33,25 @@ module.exports = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
+              additionalData: (content) => {
+                return (
+                  Object.keys(sassConfig).map(
+                    (k) => `\$${k}: ${sassConfig[k]};`
+                  ) + content
+                );
+              },
             },
           },
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|jpeg)$/,
         include: path.resolve(__dirname, "./static"),
-
         use: {
           loader: "url-loader",
           options: {
-            limit: 8192,
+            limit: 1,
+            esModule: false,
             name: "[name].[ext]",
           },
         },
@@ -54,7 +61,6 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
-        exclude: /node_modules/,
       },
     ],
   },
@@ -66,10 +72,9 @@ module.exports = {
   },
   optimization: {},
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+      chunkFilename: "[id].[contenthash].css",
     }),
-    new webpack.HotModuleReplacementPlugin({}),
-    new MiniCssExtractPlugin(),
   ],
 };

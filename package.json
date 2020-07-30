@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "START_ENV=dev webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "analyzer": "ANALYZING=true webpack --config webpack.prod.config.js"
   },
   "repository": {
@@ -19,6 +19,10 @@
     "url": "https://github.com/xiaofengbai/webpack/issues"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "@babel/runtime": "^7.10.5",
+    "@babel/runtime-corejs3": "^7.10.5",
+    "core-js": "^3.6.5",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
@@ -54,19 +58,6 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
     "webpackbar": "^4.0.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "last 1 ie version"
-    ]
   },
   "homepage": "https://github.com/xiaofengbai/webpack#readme"
 }

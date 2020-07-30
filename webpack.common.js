@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const sassConfig = require("./config/css.config");
 module.exports = {
   entry: {
-    common: "./index.js",
+    app: "./index.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -52,7 +52,7 @@ module.exports = {
           options: {
             limit: 1,
             esModule: false,
-            name: "[name].[ext]",
+            name: "/static/images/[name].[ext]",
           },
         },
       },
@@ -68,6 +68,10 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       src: path.resolve(__dirname, "./src"),
+      baseUrl:
+        process.env.NODE_ENV === "production"
+          ? ""
+          : path.relative("./static", "./static"),
     },
   },
   optimization: {},

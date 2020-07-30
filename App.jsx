@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { $imgUrl } from "./src/utils/cdnConfig";
+import { baseUrl } from "./src/utils/cdnConfig";
 import "./App.scss";
 export default class App extends Component {
   state = {
@@ -22,7 +22,7 @@ export default class App extends Component {
     const { obj } = this.state;
     return (
       <div>
-        <img src={`${$imgUrl}/images/timg.jpeg`} alt="" />
+        <img src={`${baseUrl}/images/timg.jpeg`} alt="" />
         <div className="wrap1">
           <div className="left">{obj}</div>
           <div className="center">2</div>

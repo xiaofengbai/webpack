@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { baseUrl } from "utils/cdnConfig";
-import _ from "lodash";
+import _ from "lodash/_arrayShuffle";
 import "./App.scss";
+import { cube } from "./utils/texttree";
 import Test from "./pages/Test";
 export default class App extends Component {
   state = {
@@ -18,11 +19,11 @@ export default class App extends Component {
         obj: 33313,
       });
     }, 3000);
+    console.log(cube(31));
   }
 
   render() {
     const { obj } = this.state;
-    // _.concat([3, 4], [1, 2]);
     return (
       <div>
         <Test />

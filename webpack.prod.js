@@ -4,6 +4,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const Webpackbar = require("webpackbar");
 const merge = require("webpack-merge");
 const common = require("./webpack.common");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -17,6 +18,7 @@ module.exports = merge(common, {
   devtool: "#source-map",
   plugins: [
     new CleanWebpackPlugin(),
+    new Webpackbar(),
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
@@ -28,7 +30,12 @@ module.exports = merge(common, {
     }),
   ],
   optimization: {
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: { safe: true, map: { inline: false } },
+      }),
+      new UglifyJsPlugin({ sourceMap: true }),
+    ],
   },
   performance: {
     hints: false,

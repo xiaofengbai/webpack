@@ -14,10 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        // test: /\.(scss|css|js)$/,
-        sideEffects: false,
-      },
-      {
         test: /\.(scss|css)$/,
         use: [
           {

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { baseUrl } from "./src/utils/cdnConfig";
+import { baseUrl } from "utils/cdnConfig";
+import _ from "lodash";
 import "./App.scss";
+import Test from "./pages/Test";
 export default class App extends Component {
   state = {
     obj: 1111,
@@ -20,9 +22,15 @@ export default class App extends Component {
 
   render() {
     const { obj } = this.state;
+    // _.concat([3, 4], [1, 2]);
     return (
       <div>
-        <img src={`${baseUrl}/images/timg.jpeg`} alt="" />
+        <Test />
+        <img
+          src={`${baseUrl}/images/timg.jpeg`}
+          style={{ width: "400px" }}
+          alt=""
+        />
         <div className="wrap1">
           <div className="left">{obj}</div>
           <div className="center">2</div>

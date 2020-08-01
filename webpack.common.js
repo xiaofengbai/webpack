@@ -1,17 +1,22 @@
 const path = require("path");
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const sassConfig = require("./config/css.config");
 module.exports = {
   entry: {
-    app: "./index.js",
+    app: "./src/index.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[hash].js",
+    publicPath: "/",
+    filename: "js/[name].[hash].js",
+    chunkFilename: "js/[id].[hash].js",
   },
   module: {
     rules: [
+      {
+        // test: /\.(scss|css|js)$/,
+        sideEffects: false,
+      },
       {
         test: /\.(scss|css)$/,
         use: [
@@ -68,17 +73,28 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       src: path.resolve(__dirname, "./src"),
-      baseUrl:
-        process.env.NODE_ENV === "production"
-          ? ""
-          : path.relative("./static", "./static"),
+      utils: path.resolve(__dirname, "./src/utils"),
     },
   },
-  optimization: {},
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      maxAsyncRequests: 4,
+      minSize: 10000,
+      name(module, chunks, cacheGroupKey) {
+        const moduleFileName = module
+          .identifier()
+          .split("/")
+          .reduceRight((item) => item);
+        const allChunksNames = chunks.map((item) => item.name).join("~");
+        return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+      },
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
+      filename: "css/[name].[contenthash].css",
+      chunkFilename: "css/[id].[contenthash].css",
     }),
   ],
 };

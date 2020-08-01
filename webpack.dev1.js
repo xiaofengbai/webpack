@@ -7,6 +7,7 @@ const baseConfig = require("./webpack.common");
 
 module.exports = merge(baseConfig, {
   devtool: "inline-source-map",
+  mode: "development",
   devServer: {
     open: false,
     hot: true,
@@ -16,12 +17,13 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": require("./config/env/dev.env.js"),
+      "process.env": require("./config/env/prod.env.js"),
     }),
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new CopyPlugin({
       patterns: [{ from: path.resolve(__dirname, "./static"), to: "static" }],
     }),

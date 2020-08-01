@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "build": "NODE_ENV=production webpack --config webpack.prod.js",
-    "analyzer": "ANALYZING=true webpack --config webpack.prod.config.js"
+    "dev": "SERVER_ENV=development webpack-dev-server --config webpack.dev.js",
+    "dev1": "SERVER_ENV=production webpack-dev-server --config webpack.dev1.js",
+    "build": "SERVER_ENV=production webpack --config webpack.prod.js",
+    "analyzer": "ANALYZING=true webpack --config webpack.prod.config.js",
+    "compiler": "babel src --out-dir lib --watch"
   },
   "repository": {
     "type": "git",
@@ -19,15 +22,16 @@
     "url": "https://github.com/xiaofengbai/webpack/issues"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.10.4",
     "@babel/runtime": "^7.10.5",
     "@babel/runtime-corejs3": "^7.10.5",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.19",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.10.0",
     "@babel/preset-env": "^7.9.5",

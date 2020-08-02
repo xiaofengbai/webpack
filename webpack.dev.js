@@ -7,12 +7,18 @@ const baseConfig = require("./webpack.common");
 
 module.exports = merge(baseConfig, {
   devtool: "inline-source-map",
+  mode: "development",
   devServer: {
     open: false,
     hot: true,
-    contentBase: path.join(__dirname, "./dist"),
+    contentBase: [path.join(__dirname, "static")],
+    contentBasePublicPath: "/static",
     compress: true,
     port: process.env.PORT ? process.env.PORT : 9000,
+    onListening: function (server) {
+      const port = server.listeningApp.address().port;
+      console.log("Listening on port:", port, process.env.NODE_ENV);
+    },
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -22,8 +28,5 @@ module.exports = merge(baseConfig, {
       template: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new CopyPlugin({
-      patterns: [{ from: path.resolve(__dirname, "./static"), to: "static" }],
-    }),
   ],
 });

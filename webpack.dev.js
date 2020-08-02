@@ -1,6 +1,5 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const baseConfig = require("./webpack.common");

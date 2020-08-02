@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { baseUrl } from "utils/cdnConfig";
 import _ from "lodash/_arrayShuffle";
 import "./App.scss";
+import "../style/css/index.css";
 import { cube } from "./utils/texttree";
 import Test from "./pages/Test";
 export default class App extends Component {
@@ -34,7 +35,10 @@ export default class App extends Component {
         />
         <div className="wrap1">
           <div className="left">{obj}</div>
-          <div className="center">2</div>
+          <div className="center">
+            <i className="el-icon-delete"></i>
+            侧额发二哥明天让你问好；OK你个urhlkgnebruhiglkjernbjge{" "}
+          </div>
           <div className="right">3</div>
         </div>
         <div className="wrap2">

@@ -46,14 +46,38 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif|jpeg)$/,
+        test: /\.(png|jpg|gif|jpeg|svg)$/,
         include: path.resolve(__dirname, "./static"),
         use: {
           loader: "url-loader",
           options: {
             limit: 1,
             esModule: false,
-            name: "/static/images/[name].[ext]",
+            name: "static/images/[name].[ext]",
+          },
+        },
+      },
+      {
+        test: /\.(eot|woff|ttf|woff2)(\?|$)/,
+        include: path.resolve(__dirname, "./style"),
+        use: {
+          loader: "file-loader",
+          options: {
+            limit: 1,
+            esModule: false,
+            name: "font/[name].[ext]",
+          },
+        },
+      },
+      {
+        test: /\.(ogg|mp3|mp4|pdf)(\?|$)/,
+        include: path.resolve(__dirname, "./static"),
+        use: {
+          loader: "file-loader",
+          options: {
+            limit: 1,
+            esModule: false,
+            name: "static/file/[name].[ext]",
           },
         },
       },

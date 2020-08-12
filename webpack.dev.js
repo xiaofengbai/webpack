@@ -13,10 +13,23 @@ module.exports = merge(baseConfig, {
     contentBase: [path.join(__dirname, "static")],
     contentBasePublicPath: "/static",
     compress: true,
+    historyApiFallback: true,
     port: process.env.PORT ? process.env.PORT : 9000,
     onListening: function (server) {
       const port = server.listeningApp.address().port;
       console.log("Listening on port:", port, process.env.NODE_ENV);
+    },
+    clientLogLevel: "debug",
+    inline: true,
+    proxy: {
+      "/api": {
+        target: "http://10.2.2.3:8080",
+        pathRewrite: { "^/api": "" },
+        changeOrigin: true,
+        onProxyReq: function (req, res, proxyReq) {
+          console.log(req.param("firstName"));
+        },
+      },
     },
   },
   plugins: [
@@ -25,6 +38,15 @@ module.exports = merge(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       template: "./index.html",
+      filename: "index/index.html",
+      hot: true,
+      chunks: ["app"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+      filename: "index2/index.html",
+      hot: true,
+      chunks: ["app1"],
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

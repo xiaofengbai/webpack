@@ -4,6 +4,7 @@ const sassConfig = require("./config/css.config");
 module.exports = {
   entry: {
     app: "./src/index.js",
+    app1: "./src/index2.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

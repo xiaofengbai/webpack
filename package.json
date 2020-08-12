@@ -13,7 +13,8 @@
     "dev": "SERVER_ENV=development webpack-dev-server --progress --config webpack.dev.js",
     "build": "SERVER_ENV=production webpack --config webpack.prod.js",
     "analyzer": "ANALYZING=true SERVER_ENV=production webpack --config webpack.prod.js",
-    "compiler": "babel src --out-dir lib --watch"
+    "compiler": "babel src --out-dir lib --watch",
+    "brk": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --inline --progress --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -28,10 +29,14 @@
     "@babel/runtime": "^7.10.5",
     "@babel/runtime-corejs3": "^7.10.5",
     "antd": "^4.5.1",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "install": "^0.13.0",
     "lodash": "^4.17.19",
+    "npm": "^6.14.7",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -23,6 +23,15 @@ module.exports = merge(common, {
     new Webpackbar(),
     new HtmlWebpackPlugin({
       template: "./index.html",
+      filename: "index/index.html",
+      hot: true,
+      chunks: ["app"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+      filename: "index2/index.html",
+      hot: true,
+      chunks: ["app1"],
     }),
     new webpack.DefinePlugin({
       "process.env": require("./config/env/prod.env.js"),

@@ -10,6 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec node server.js",
+    "server": "node servers.js",
     "dev": "SERVER_ENV=development webpack-dev-server --progress --config webpack.dev.js",
     "build": "SERVER_ENV=production webpack --config webpack.prod.js",
     "analyzer": "ANALYZING=true SERVER_ENV=production webpack --config webpack.prod.js",

@@ -13,6 +13,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 
 module.exports = merge(common, {
   output: {
+    path: path.resolve(__dirname, "dist"),
     filename: "js/[name].[contenthash].js",
     chunkFilename: "js/[name].[contenthash].js",
     publicPath: "/",
@@ -23,15 +24,9 @@ module.exports = merge(common, {
     new Webpackbar(),
     new HtmlWebpackPlugin({
       template: "./index.html",
-      filename: "index/index.html",
+      filename: "index.html",
       hot: true,
       chunks: ["app"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-      filename: "index2/index.html",
-      hot: true,
-      chunks: ["app1"],
     }),
     new webpack.DefinePlugin({
       "process.env": require("./config/env/prod.env.js"),

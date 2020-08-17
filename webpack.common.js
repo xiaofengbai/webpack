@@ -102,14 +102,15 @@ module.exports = {
       chunks: "all",
       maxAsyncRequests: 4,
       minSize: 10000,
-      name(module, chunks, cacheGroupKey) {
-        const moduleFileName = module
-          .identifier()
-          .split("/")
-          .reduceRight((item) => item);
-        const allChunksNames = chunks.map((item) => item.name).join("~");
-        return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-      },
+      name: false,
+      // name(module, chunks, cacheGroupKey) {
+      //   const moduleFileName = module
+      //     .identifier()
+      //     .split("/")
+      //     .reduceRight((item) => item);
+      //   const allChunksNames = chunks.map((item) => item.name).join("~");
+      //   return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+      // },
     },
   },
   plugins: [

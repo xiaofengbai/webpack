@@ -16,5 +16,5 @@ Babel 的编译过程和大多数其他语言的编译器相似，可以分为�
 - 转换（Transformation）：对抽象语法树进行转换操作。
 - 生成（Code Generation）: 根据变换后的抽象语法树再生成代码字符串。
 
-![step](https://zcy-video.oss-cn-shanghai.aliyuncs.com/medical/zooTeam/9.16/167e0927a1a40b40)
+![step](https://github.com/xiaofengbai/webpack/blob/master/babel/static/core.png)
 

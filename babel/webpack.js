@@ -17,17 +17,10 @@ module.exports = {
         },
         exclude: /node_modules/,
       },
-      {
-        test: /\.ts?$/,
-        use: {
-          loader: "ts-loader",
-        },
-        exclude: /node_modules/,
-      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".js"],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -38,6 +31,6 @@ module.exports = {
   devServer: {
     open: false,
     contentBase: path.join(__dirname, "dist"),
-    port: 8888,
+    port: 8899,
   },
 };

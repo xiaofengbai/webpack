@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import { parse } from "@babel/parser";
+import generate from "@babel/generator";
+const code = `
+const a = 1;
+`;
 
-export default class index extends Component {
-  render() {
-    return (
-      <div>
-        1111
-      </div>
-    )
-  }
-}
+const ast = parse(code, {
+  // plugins: ["jsx"],
+});
+const generate1 = generate(ast.program);
+console.log(JSON.stringify(ast, null, 2), generate1);

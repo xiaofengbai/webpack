@@ -1,4 +1,6 @@
 # Browsers that we support
 
+#last 2 Chrome versions
+
 defaults
-not ie <= 10
+not ie <= 11

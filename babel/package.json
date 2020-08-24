@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --config webpack.js"
+    "dev": "webpack-dev-server --config webpack.js",
+    "compiler": "babel src --out-dir lib --watch"
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",

@@ -4,9 +4,9 @@ const express = require("express");
 const webpack = require("webpack");
 const bodyParser = require("body-parser");
 const log4js = require("log4js");
-const config = require("./webpack.dev");
+const config = require("../webpack.dev");
 const compiler = webpack(config);
-const proxyConfig = require("./proxy");
+const proxyConfig = require("../proxy");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
 const { createProxyMiddleware } = require("http-proxy-middleware");
@@ -48,11 +48,6 @@ app.use(
   })
 );
 
-app.get("/*", function (req, res) {
-  logger.error(__dirname);
-  res.sendFile(path.resolve(__dirname, "/pa", "a"));
-});
-
 app.use(
   webpackHotMiddleware(compiler, {
     log: console.log,
@@ -87,6 +82,17 @@ for (const key in proxyConfig) {
   proxy.onError = onError;
   app.use(key, createProxyMiddleware(proxy));
 }
+app.use("*", (req, res, next) => {
+  const filename = path.resolve(compiler.outputPath, "index.html");
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.set("content-type", "text/html");
+    res.send(result);
+    res.end();
+  });
+});
 var server = http.createServer(app);
 
 server.listen(process.env.PORT || 3000, function () {

@@ -1,6 +1,5 @@
 const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 console.log(1)
-sleep(2000)
 
 async function fn() {
     await sleep(2000)
@@ -27,7 +26,6 @@ p1.then((res) => {
 
 
 
-var name: string = `gl1`;
 const obj = {
     name: 'inner name1',
     getName() {

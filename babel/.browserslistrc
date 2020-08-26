@@ -3,5 +3,5 @@
 
 #last 2 Chrome versions
 
-defaults
-not ie <= 11
+#defaults
+ie >10 

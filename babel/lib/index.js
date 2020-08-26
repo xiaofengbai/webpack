@@ -10,6 +10,6 @@ const ast = parse(code0, {
 const generate1 = generate(ast.program);
 console.log(JSON.stringify(ast, null, 2), generate1);
  */
-const f1 = () => {};
+const f1 = function () {};
 
 const [a, b] = [1, 2];

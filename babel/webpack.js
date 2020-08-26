@@ -33,4 +33,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     port: 8899,
   },
+  node: {
+    fs: "empty",
+  },
 };

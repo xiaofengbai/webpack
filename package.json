@@ -27,6 +27,7 @@
     "url": "https://github.com/xiaofengbai/webpack/issues"
   },
   "dependencies": {
+    "@babel/node": "^7.10.5",
     "@babel/runtime": "^7.10.5",
     "@babel/runtime-corejs3": "^7.10.5",
     "antd": "^4.5.1",

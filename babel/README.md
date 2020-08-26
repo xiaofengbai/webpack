@@ -38,6 +38,8 @@ Babel 的编译过程和大多数其他语言的编译器相似，可以分为�
 
 Babel 的核心功能包含在 @babel/core 模块中,没有它,在 babel 的世界里注定寸步难行.不安装 @babel/core,无法使用 babel 进行编译
 
+![图](http://hetao-edu-bucket.oss-cn-beijing.aliyuncs.com/thoughts/static/a1.png)
+
 ## Babel 配置
 
 [官方文档](https://babel.docschina.org/docs/en/configuration)
